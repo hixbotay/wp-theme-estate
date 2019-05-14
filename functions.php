@@ -7,13 +7,15 @@ foreach (glob(HBPRO_THEME_PATH.'/shortcodes/*.php') as $filename)
 	require_once $filename;
 }
 require_once 'post_type.php';
+
 //script
 add_action( 'wp_enqueue_scripts', 'hbpro_scripts' );
 function hbpro_scripts() {
 	$root = get_stylesheet_directory_uri();	
 	wp_enqueue_style( 'fontawesome', $root.'/css/fontawesome.min.css');
 	wp_enqueue_style( 'fontawesome-light', $root.'/css/font-awesome-light.css');
-	wp_enqueue_style( 'fontawesome-light', $root.'/css/source.css');	
+	wp_enqueue_style( 'fontawesome-light', $root.'/css/source.css');
+	wp_enqueue_script( 'fontawesome-light', $root.'/assets/js/source.js');	
 }
 //SEO
 add_action( 'wp_head', 'theme_xyz_header_metadata' );
