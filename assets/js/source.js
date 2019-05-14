@@ -17,7 +17,7 @@ function openPopupWindow(obj) {
 }
 
 
-$(document).ready(function(){
+jQuery(document).ready(function($){
 	var width = $(window).width();
 	$(window).resize(function() {
 		width = $(window).width();
@@ -414,7 +414,7 @@ new(function(){});var f=j.$Jease$={$Swing:function(a){return-c.cos(a*c.PI)/2+.5}
   /*#endregion responsive code end*/
 };
 
-$(document).ready(function () {
+jQuery(document).ready(function ($) {
   jssor_1_slider_init();
 
   var width = $(window).width();
@@ -544,7 +544,7 @@ var lastScrollTop = 0;
     window.location.href=link;
     return false;
 }	
-$(document).ready(function(){
+jQuery(document).ready(function($){
 	$('.button_a').click(function(){
 		$('#search_form').css('display','block');
 		$('#search_form').css('width','300px');

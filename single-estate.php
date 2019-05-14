@@ -15,9 +15,10 @@ $post = get_post();
       'post__not_in'=>array($post->ID)
    ) );
 $meta = get_post_meta($post->ID);
+$slide_show = unserialize($meta['slide_show'][0]);
+
 
 do_action('flatsome_before_blog');
-
 ?>
 <div class='wrapper_content nohome'>
 <div class='main_wrapper container  '>
@@ -38,12 +39,12 @@ do_action('flatsome_before_blog');
 						<div data-u="slides"
 							style="cursor:default;position:relative;top:0px;left:0px;width:1170px;height:585px;overflow:hidden;">
 
-							<?php foreach($images as $img){?>
+							<?php foreach($slide_show as $img){?>
 							<div>
 								<img data-u="image"
-									src="<?php echo wp_get_attachment_image_src($img,'large')?>" />
+									src="<?php echo wp_get_attachment_image_src($img,'large')[0]?>" />
 								<img data-u="thumb"
-									src="<?php echo wp_get_attachment_image_src($img,'medium')?>" />
+									src="<?php echo wp_get_attachment_image_src($img,'medium')[0]?>" />
 							</div>
 							<?php }?>
 
@@ -99,7 +100,7 @@ do_action('flatsome_before_blog');
 
 								<div class="name"><span>Tên dự án: </span><?php the_title()?></div>
 							</div>
-							<div class="contact"><a href="/lien-he.html" title="Liên hệ">Liên hệ</a></div>
+							<div class="contact"><a href="/lien-he" title="Liên hệ">Liên hệ</a></div>
 						</div>
 
 						<div class="clear"></div>
@@ -107,19 +108,12 @@ do_action('flatsome_before_blog');
 					</div>
 
 
-
-
-					<!--     -->
-
-
-
-
 					<div id="prodetails_tab4" class="prodetails_tab mbl">
 
 
 						<div class="products-list-related">
 							<div class='tab_label'><span>Có thể bạn quan tâm</span></div>
-							<div class="product_grid clearfix projectlist_slide vertical cls	
+							<div class="product_grid clearfix projectlist_slide vertical cls">
 							<?php  if($relate_query->have_posts()) {
 							while ($relate_query->have_posts() ) : $relate_query->the_post(); ?>
 								
@@ -130,7 +124,7 @@ do_action('flatsome_before_blog');
 										<figure>
 
 											<picture>
-												<?php the_post_thumbnail( 'medium', array('alt' => get_the_title()),'class'=>'img-responsive' ); ?>
+												<?php the_post_thumbnail( 'medium', array('alt' => get_the_title(),'class'=>'img-responsive')); ?>
 											</picture>
 										</figure>
 										<h2 class="name" itemprop="name">
@@ -140,28 +134,18 @@ do_action('flatsome_before_blog');
 
 									</a>
 								</div>
-							<?php endwhile; wp_reset_query();?>
+							<?php endwhile; wp_reset_query();
+							}?>
    
 
 							</div>
 						</div>
 					</div>
-
-
-
-
-
-
 				</div>
-
-
-
 			</div>
 			<div class='clear'></div>
-
-
-
 		</div>
 </div>
 
-<?php get_footer();
+<?php 
+get_footer();
