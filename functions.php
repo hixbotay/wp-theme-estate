@@ -63,52 +63,5 @@ function mycustom_wpcf7_form_elements( $form ) {
 	return $form;
 }
 */
-//woocomerce
-/*
-add_filter( 'woocommerce_checkout_fields' , 'hb_woo_theme_custom_fields' );
-function hb_woo_theme_custom_fields( $fields ) {
-    unset($fields['billing']['billing_country']);
-	unset($fields['billing']['billing_address_2']);
-	$fields['billing']['billing_address_1']['type']='textarea';
-	$fields['billing']['billing_address_1']['class']=['notes'];
-	
-	unset($fields['billing']['billing_state']);//['label']="Tỉnh/Thành phố";
-	unset($fields['shipping']['shipping_company']);
-	unset($fields['shipping']['shipping_country']);
-	unset($fields['shipping']['shipping_address_2']);
-	unset($fields['shipping']['shipping_city']);
-	unset($fields['shipping']['shipping_state']);
-	unset($fields['shipping']['shipping_postcode']);
-	$fields['shipping']['shipping_address_1']['type']='textarea';
-	$fields['shipping']['shipping_address_1']['required']=0;
-	$fields['shipping']['shipping_first_name']['required']=0;
-	$fields['shipping']['shipping_last_name']['required']=0;	
-	$fields['shipping']['shipping_state']['label']="Tỉnh/Thành phố";
-	$fields['billing']['billing_email']['required']=0;
-	$fields['billing']['billing_phone2'] = [
-		'label'=>'Số điện thoại dự phòng',
-		'type'=>'tel',
-		'priority'=>20];
-	
-	//sap xep
-	$mybillingfields=array(
-		"billing_first_name",
-		"billing_last_name",
-		"billing_company",
-		"billing_phone",
-		"billing_phone2",
-		"billing_email",
-		"billing_address_1",
-	);
-	$ordered_fields=[];
-	foreach($mybillingfields as $field)
-    {
-        $ordered_fields[$field] = $fields["billing"][$field];
-    }
 
-    $fields["billing"] = $ordered_fields;
-	//debug($fields);
-	return $fields;
-}
-*/
 

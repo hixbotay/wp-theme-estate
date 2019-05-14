@@ -7,14 +7,24 @@
 
 get_header();
 
+$post = get_post();
+ $relate_query = new WP_Query( array(
+      'post_type' => 'estate',
+      'posts_per_page' => 3,
+      'ignore_sticky_posts' => 1,
+      'post__not_in'=>array($post->ID)
+   ) );
+$meta = get_post_meta($post->ID);
+
+do_action('flatsome_before_blog');
+
 ?>
 <div class='wrapper_content nohome'>
 <div class='main_wrapper container  '>
 			<div class="main-area-full">
 				<div class='project'>
 
-					<h1 class="product_name">
-						Biệt thự phong cách tân cổ điển - Chủ đầu tư: Anh Hiệp </h1>
+					<h1 class="product_name"><?php the_title()?></h1>
 
 
 					<div id="jssor_1"
@@ -28,175 +38,15 @@ get_header();
 						<div data-u="slides"
 							style="cursor:default;position:relative;top:0px;left:0px;width:1170px;height:585px;overflow:hidden;">
 
-
+							<?php foreach($images as $img){?>
 							<div>
 								<img data-u="image"
-									src="https://thietkeroyalhome.com/images/projects/2019/05/04/original/340a5146-copy_1556955380.jpg" />
+									src="<?php echo wp_get_attachment_image_src($img,'large')?>" />
 								<img data-u="thumb"
-									src="https://thietkeroyalhome.com/images/projects/2019/05/04/large/340a5146-copy_1556955380.jpg" />
+									src="<?php echo wp_get_attachment_image_src($img,'medium')?>" />
 							</div>
+							<?php }?>
 
-
-							<div>
-								<img data-u="image"
-									src="https://thietkeroyalhome.com/images/projects/2019/05/04/large/340a5138-copy.jpg" />
-								<img data-u="thumb"
-									src="https://thietkeroyalhome.com/images/projects/2019/05/04/large/340a5138-copy.jpg" />
-							</div>
-
-							<div>
-								<img data-u="image"
-									src="https://thietkeroyalhome.com/images/projects/2019/05/04/large/340a5146-copy.jpg" />
-								<img data-u="thumb"
-									src="https://thietkeroyalhome.com/images/projects/2019/05/04/large/340a5146-copy.jpg" />
-							</div>
-
-							<div>
-								<img data-u="image"
-									src="https://thietkeroyalhome.com/images/projects/2019/05/04/large/340a5262-copy.jpg" />
-								<img data-u="thumb"
-									src="https://thietkeroyalhome.com/images/projects/2019/05/04/large/340a5262-copy.jpg" />
-							</div>
-
-							<div>
-								<img data-u="image"
-									src="https://thietkeroyalhome.com/images/projects/2019/05/04/large/340a5263-copy.jpg" />
-								<img data-u="thumb"
-									src="https://thietkeroyalhome.com/images/projects/2019/05/04/large/340a5263-copy.jpg" />
-							</div>
-
-							<div>
-								<img data-u="image"
-									src="https://thietkeroyalhome.com/images/projects/2019/05/04/large/340a5264-copy.jpg" />
-								<img data-u="thumb"
-									src="https://thietkeroyalhome.com/images/projects/2019/05/04/large/340a5264-copy.jpg" />
-							</div>
-
-							<div>
-								<img data-u="image"
-									src="https://thietkeroyalhome.com/images/projects/2019/05/04/large/340a5152-copy.jpg" />
-								<img data-u="thumb"
-									src="https://thietkeroyalhome.com/images/projects/2019/05/04/large/340a5152-copy.jpg" />
-							</div>
-
-							<div>
-								<img data-u="image"
-									src="https://thietkeroyalhome.com/images/projects/2019/05/04/large/340a5155-copy.jpg" />
-								<img data-u="thumb"
-									src="https://thietkeroyalhome.com/images/projects/2019/05/04/large/340a5155-copy.jpg" />
-							</div>
-
-							<div>
-								<img data-u="image"
-									src="https://thietkeroyalhome.com/images/projects/2019/05/04/large/340a5147-copy.jpg" />
-								<img data-u="thumb"
-									src="https://thietkeroyalhome.com/images/projects/2019/05/04/large/340a5147-copy.jpg" />
-							</div>
-
-							<div>
-								<img data-u="image"
-									src="https://thietkeroyalhome.com/images/projects/2019/05/04/large/340a5150-copy.jpg" />
-								<img data-u="thumb"
-									src="https://thietkeroyalhome.com/images/projects/2019/05/04/large/340a5150-copy.jpg" />
-							</div>
-
-							<div>
-								<img data-u="image"
-									src="https://thietkeroyalhome.com/images/projects/2019/05/04/large/340a5164-copy.jpg" />
-								<img data-u="thumb"
-									src="https://thietkeroyalhome.com/images/projects/2019/05/04/large/340a5164-copy.jpg" />
-							</div>
-
-							<div>
-								<img data-u="image"
-									src="https://thietkeroyalhome.com/images/projects/2019/05/04/large/340a5158-copy.jpg" />
-								<img data-u="thumb"
-									src="https://thietkeroyalhome.com/images/projects/2019/05/04/large/340a5158-copy.jpg" />
-							</div>
-
-							<div>
-								<img data-u="image"
-									src="https://thietkeroyalhome.com/images/projects/2019/05/04/large/340a5161-copy.jpg" />
-								<img data-u="thumb"
-									src="https://thietkeroyalhome.com/images/projects/2019/05/04/large/340a5161-copy.jpg" />
-							</div>
-
-							<div>
-								<img data-u="image"
-									src="https://thietkeroyalhome.com/images/projects/2019/05/04/large/340a5166-copy.jpg" />
-								<img data-u="thumb"
-									src="https://thietkeroyalhome.com/images/projects/2019/05/04/large/340a5166-copy.jpg" />
-							</div>
-
-							<div>
-								<img data-u="image"
-									src="https://thietkeroyalhome.com/images/projects/2019/05/04/large/340a5171-copy.jpg" />
-								<img data-u="thumb"
-									src="https://thietkeroyalhome.com/images/projects/2019/05/04/large/340a5171-copy.jpg" />
-							</div>
-
-							<div>
-								<img data-u="image"
-									src="https://thietkeroyalhome.com/images/projects/2019/05/04/large/340a5174-copy.jpg" />
-								<img data-u="thumb"
-									src="https://thietkeroyalhome.com/images/projects/2019/05/04/large/340a5174-copy.jpg" />
-							</div>
-
-							<div>
-								<img data-u="image"
-									src="https://thietkeroyalhome.com/images/projects/2019/05/04/large/340a5177-copy.jpg" />
-								<img data-u="thumb"
-									src="https://thietkeroyalhome.com/images/projects/2019/05/04/large/340a5177-copy.jpg" />
-							</div>
-
-							<div>
-								<img data-u="image"
-									src="https://thietkeroyalhome.com/images/projects/2019/05/04/large/340a5179-copy.jpg" />
-								<img data-u="thumb"
-									src="https://thietkeroyalhome.com/images/projects/2019/05/04/large/340a5179-copy.jpg" />
-							</div>
-
-							<div>
-								<img data-u="image"
-									src="https://thietkeroyalhome.com/images/projects/2019/05/04/large/340a5180-copy.jpg" />
-								<img data-u="thumb"
-									src="https://thietkeroyalhome.com/images/projects/2019/05/04/large/340a5180-copy.jpg" />
-							</div>
-
-							<div>
-								<img data-u="image"
-									src="https://thietkeroyalhome.com/images/projects/2019/05/04/large/340a5183-copy.jpg" />
-								<img data-u="thumb"
-									src="https://thietkeroyalhome.com/images/projects/2019/05/04/large/340a5183-copy.jpg" />
-							</div>
-
-							<div>
-								<img data-u="image"
-									src="https://thietkeroyalhome.com/images/projects/2019/05/04/large/340a5199-copy.jpg" />
-								<img data-u="thumb"
-									src="https://thietkeroyalhome.com/images/projects/2019/05/04/large/340a5199-copy.jpg" />
-							</div>
-
-							<div>
-								<img data-u="image"
-									src="https://thietkeroyalhome.com/images/projects/2019/05/04/large/340a5203-copy.jpg" />
-								<img data-u="thumb"
-									src="https://thietkeroyalhome.com/images/projects/2019/05/04/large/340a5203-copy.jpg" />
-							</div>
-
-							<div>
-								<img data-u="image"
-									src="https://thietkeroyalhome.com/images/projects/2019/05/04/large/340a5187-copy.jpg" />
-								<img data-u="thumb"
-									src="https://thietkeroyalhome.com/images/projects/2019/05/04/large/340a5187-copy.jpg" />
-							</div>
-
-							<div>
-								<img data-u="image"
-									src="https://thietkeroyalhome.com/images/projects/2019/05/04/large/340a5195-copy.jpg" />
-								<img data-u="thumb"
-									src="https://thietkeroyalhome.com/images/projects/2019/05/04/large/340a5195-copy.jpg" />
-							</div>
 						</div>
 						<!-- Thumbnail Navigator -->
 						<div data-u="thumbnavigator" class="jssort101"
@@ -240,15 +90,14 @@ get_header();
 						<div class="descrip">
 							<div class="des_title">Chi tiết dự án</div>
 							<div class="des">
-								<p>Biệt thự phong c&aacute;ch t&acirc;n cổ điển - Chủ đầu tư: Anh Hiệp</p>
+								<p><?php the_content()?></p>
 							</div>
 						</div>
 						<div class="detail">
 							<div class="detail_title">Thông tin dự án</div>
 							<div class="det">
 
-								<div class="name"><span>Tên dự án: </span>Biệt thự phong cách tân cổ điển - Chủ đầu tư:
-									Anh Hiệp</div>
+								<div class="name"><span>Tên dự án: </span><?php the_title()?></div>
 							</div>
 							<div class="contact"><a href="/lien-he.html" title="Liên hệ">Liên hệ</a></div>
 						</div>
@@ -270,18 +119,18 @@ get_header();
 
 						<div class="products-list-related">
 							<div class='tab_label'><span>Có thể bạn quan tâm</span></div>
-							<div class="product_grid clearfix projectlist_slide vertical cls	">
-								<div class="item " itemscope="" itemtype="http://schema.org/Product">
+							<div class="product_grid clearfix projectlist_slide vertical cls	
+							<?php  if($relate_query->have_posts()) {
+							while ($relate_query->have_posts() ) : $relate_query->the_post(); ?>
+								
+								<div class="item " itemscope="" itemtype="">
 									<link itemprop="url" href="">
-									<a href="https://thietkeroyalhome.com/cong-trinh-da-thi-cong/toa-nha-northern-diamond-du-an-song-hong-dpj6226.html"
-										title="Tòa nhà Northern Diamond - Dự án Sông Hồng">
+									<a href="<?php the_permalink() ?>"
+										title="<?php  the_title() ?>">
 										<figure>
 
 											<picture>
-												<img class="img-responsive"
-													alt="Tòa nhà Northern Diamond - Dự án Sông Hồng"
-													src="https://thietkeroyalhome.com/images/projects/2019/05/04/resized/340a4946-copy_1556955634.jpg"
-													onerror="javascript:this.src='https://thietkeroyalhome.com/images/NA285x200.jpg';" />
+												<?php the_post_thumbnail( 'medium', array('alt' => get_the_title()),'class'=>'img-responsive' ); ?>
 											</picture>
 										</figure>
 										<h2 class="name" itemprop="name">
@@ -291,46 +140,9 @@ get_header();
 
 									</a>
 								</div>
-								<div class="item " itemscope="" itemtype="http://schema.org/Product">
-									<link itemprop="url" href="">
-									<a href="https://thietkeroyalhome.com/thiet-ke-chung-cu/thiet-ke-noi-that-chung-cu-green-park-can-a11-dpj6221.html"
-										title="THIẾT KẾ NỘI THẤT CHUNG CƯ GREEN PARK CĂN A11">
-										<figure>
+							<?php endwhile; wp_reset_query();?>
+   
 
-											<picture>
-												<img class="img-responsive"
-													alt="THIẾT KẾ NỘI THẤT CHUNG CƯ GREEN PARK CĂN A11"
-													src="https://thietkeroyalhome.com/images/projects/2019/04/16/resized/10_1555444589.jpg"
-													onerror="javascript:this.src='https://thietkeroyalhome.com/images/NA285x200.jpg';" />
-											</picture>
-										</figure>
-										<h2 class="name" itemprop="name">
-											THIẾT KẾ NỘI THẤT CHUNG CƯ GREEN PARK... </h2>
-										<div class="clear"></div>
-										<div class="loca">&nbsp;</div>
-
-									</a>
-								</div>
-								<div class="item " itemscope="" itemtype="http://schema.org/Product">
-									<link itemprop="url" href="">
-									<a href="https://thietkeroyalhome.com/thiet-ke-chung-cu/thiet-ke-noi-that-chung-cu-donphin-em-tuyen-dpj6220.html"
-										title="THIẾT KẾ NỘI THẤT CHUNG CƯ DONPHIN - EM TUYÊN">
-										<figure>
-
-											<picture>
-												<img class="img-responsive"
-													alt="THIẾT KẾ NỘI THẤT CHUNG CƯ DONPHIN - EM TUYÊN"
-													src="https://thietkeroyalhome.com/images/projects/2019/03/28/resized/k4_1553733043.jpg"
-													onerror="javascript:this.src='https://thietkeroyalhome.com/images/NA285x200.jpg';" />
-											</picture>
-										</figure>
-										<h2 class="name" itemprop="name">
-											THIẾT KẾ NỘI THẤT CHUNG CƯ DONPHIN - EM... </h2>
-										<div class="clear"></div>
-										<div class="loca">&nbsp;</div>
-
-									</a>
-								</div>
 							</div>
 						</div>
 					</div>
