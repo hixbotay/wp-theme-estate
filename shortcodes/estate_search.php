@@ -42,3 +42,4 @@ function fvn_estate_search($atts)
 	return $output;
 }
 add_shortcode('woocommerce_product_search1', 'fvn_estate_search');
+
