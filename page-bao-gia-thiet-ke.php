@@ -10,9 +10,6 @@ get_header(); ?>
 		<div class="main-area-full">
 
 			<div class="furnitures_home">
-				<h1 class="img-title-cat page_title">
-					<span>Chọn tham khảo giá</span>
-				</h1>
 				<div class="menu_cat_furn cls">
 
 					<form method="post" action="#" name="furnitures" class="form">
@@ -125,7 +122,9 @@ get_header(); ?>
 
 	</div>
 </div>
-<script>
+<?php do_action( 'flatsome_after_page' ); ?>
+
+<?php get_footer(); ?>
 
 <script>
 jQuery(document).ready(function($){
@@ -229,8 +228,33 @@ $('.quality2').change(function(){
 
 })
 });
-</script>
-</script>
-<?php do_action( 'flatsome_after_page' ); ?>
+function formatCurrency(num) {
 
-<?php get_footer(); ?>
+num = num.toString().replace(/\$|\,/g,'');
+
+if(isNaN(num))
+
+	num = "0";
+
+sign = (num == (num = Math.abs(num)));
+
+num = Math.floor(num*100+0.50000000001);
+
+cents = num%100;
+
+num = Math.floor(num/100).toString();
+
+if(cents<10)
+
+	cents = "0" + cents;
+
+for (var i = 0; i < Math.floor((num.length-(1+i))/3); i++)
+
+	num = num.substring(0,num.length-(4*i+3))+'.'+
+
+num.substring(num.length-(4*i+3));
+
+return (((sign)?'':'-')  + num );
+
+}
+</script>

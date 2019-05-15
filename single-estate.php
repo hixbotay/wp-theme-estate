@@ -4,7 +4,7 @@
  *
  * @package flatsome
  */
-
+wp_enqueue_script( 'original-web', FVN_URL.'/assets/js/source.js',array(),'1.0.0',true);	
 get_header();
 
 $post = get_post();
@@ -45,7 +45,7 @@ $slide_show = unserialize($meta['slide_show'][0]); ?>
 		</div>
 	</div>
 
-	<?php do_action('flatsome_before_blog'); ?>
+	<?php the_breadcrumb() ?>
 
 	<div class='main_wrapper container  '>
 		<div class="main-area-full">
@@ -140,8 +140,7 @@ $slide_show = unserialize($meta['slide_show'][0]); ?>
 													<?php the_post_thumbnail('medium', array('alt' => get_the_title(), 'class' => 'img-responsive')); ?>
 												</picture>
 											</figure>
-											<h2 class="name" itemprop="name">
-												Tòa nhà Northern Diamond - Dự án Sông... </h2>
+											<h2 class="name" itemprop="name"><?php the_title()?></h2>
 											<div class="clear"></div>
 											<div class="loca">&nbsp;</div>
 

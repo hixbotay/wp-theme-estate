@@ -17,7 +17,6 @@ function hbpro_scripts() {
 	wp_enqueue_style( 'fontawesome', $root.'/css/fontawesome.min.css');
 	wp_enqueue_style( 'fontawesome-light', $root.'/css/font-awesome-light.css');
 	wp_enqueue_style( 'original-web', $root.'/css/source.css');
-	wp_enqueue_script( 'original-web', $root.'/assets/js/source.js',array(),'1.0.0',true);	
 }
 //SEO
 add_action( 'wp_head', 'theme_xyz_header_metadata' );
@@ -107,5 +106,17 @@ function the_breadcrumb() {
 		</div>';
 }
 
-add_action('flatsome_before_page','the_breadcrumb', 1);
-add_action('flatsome_before_blog','the_breadcrumb', 1);
+function the_title_of_single_page(){
+	$post = get_post();
+	if($post->post_type!='estate')
+		echo '<div class="container"><h1 class="img-title-cat page_title">
+			<span>'.$post->post_title.'</span>
+	  		</h1></div>';
+}
+
+add_action('flatsome_before_page','the_breadcrumb', 10);
+// add_action('flatsome_before_page','add_class_before_content', 1);
+add_action('flatsome_before_page','the_title_of_single_page', 11);
+// apply_filters( 'the_content', 'the_title_of_single_page' );
+
+add_action('flatsome_before_blog','the_breadcrumb', 10);
