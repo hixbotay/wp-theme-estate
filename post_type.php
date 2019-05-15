@@ -38,8 +38,8 @@ if ( ! function_exists('add_config_post_type') ) {
             'label'                 => __( 'Config'),
             'description'           => __( 'Cấu hình thi công'),
             'labels'                => $labels,
-            'supports'              => array( 'title','custom-fields'),
-            'taxonomies'            =>false,
+            'supports'              => array( 'title','excerpt'),
+            'taxonomies'            => array(),
             'hierarchical'          => false,
             'public'                => false,
             'show_ui'               => true,
@@ -88,8 +88,8 @@ if ( ! function_exists('add_config_post_type') ) {
             'label'                 => __( 'Công trình'),
             'description'           => __( 'Công trình'),
             'labels'                => $labels,
-            'supports'              => array( 'title','editor'),
-            'taxonomies'            =>array('category','post_tag'),
+            'supports'              => array( 'title','editor','revisions','thumbnail','author'),
+            'taxonomies'            => array('category','post_tag'),
             'hierarchical'          => true,
             'public'                => true,
             'show_ui'               => true,
@@ -108,4 +108,40 @@ if ( ! function_exists('add_config_post_type') ) {
     }
     add_action( 'init', 'add_config_post_type', 0 );
     
+}
+
+function fvn_get_config(){
+    global $wpdb;
+
+    $posts = get_posts ( array (
+        'post_type' => 'config_fvn'
+    ) );
+    
+    $result = [];
+    foreach($posts as $post){
+        $lines = explode(PHP_EOL,$post->post_excerpt);
+        foreach($lines as $i=>$l){
+            $value = explode('||',$l);
+            $lines[$i] = [
+                'value' => $l[0],
+                'text' => $l[1]
+            ];
+        }
+        $result[$post->post_name]=$lines;
+    }
+    return $result;
+}
+
+//allow estate in category view
+add_filter('pre_get_posts', 'query_post_estate');
+function query_post_estate($query) {
+  if( is_category() ) {
+    $post_type = get_query_var('post_type');
+    if($post_type)
+        $post_type = $post_type;
+    else
+        $post_type = array('nav_menu_item', 'post', 'estate'); // don't forget nav_menu_item to allow menus to work!
+    $query->set('post_type',$post_type);
+    return $query;
+    }
 }

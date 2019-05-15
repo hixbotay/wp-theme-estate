@@ -1,12 +1,14 @@
 <?php
 //them shortcode
 if(!defined('HBPRO_THEME_PATH')) define('HBPRO_THEME_PATH', (__DIR__));
+if(!defined('FVN_URL')) define('FVN_URL', site_url('/wp-content/themes/freelancerviet.net/'));
 //shortcode
 foreach (glob(HBPRO_THEME_PATH.'/shortcodes/*.php') as $filename)
 {
 	require_once $filename;
 }
 require_once 'post_type.php';
+require_once 'helpers/html.php';
 
 //script
 add_action( 'wp_enqueue_scripts', 'hbpro_scripts' );
@@ -65,3 +67,45 @@ function mycustom_wpcf7_form_elements( $form ) {
 */
 
 
+//breadcum
+function the_breadcrumb() {
+	echo '<div class="dbreadcrumbs">
+			<div class="container">
+			<div class="breadcrumbs_wrapper" itemscope="" itemtype="http://schema.org/WebPage">
+            <ul class="breadcrumb" itemscope="itemscope" itemtype="https://schema.org/BreadcrumbList">';
+	if (!is_home()) {
+		echo '<li class="breadcrumb__item" itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem">
+			<a href="'.get_option('home').'">';
+		echo '<span itemprop="name">Trang chủ</span>
+			</a>
+		</li>';
+		if (is_category() || is_single()) {
+				echo '<li class="breadcrumb__item" itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem"> ';
+				the_category (' </li><li class="breadcrumb__item" itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem"> ');
+				if (is_single()) {
+						echo '<li class="breadcrumb__item" itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem">';
+						the_title();
+						echo '</li>';
+				}
+		} elseif (is_page()) {
+				echo '<li class="breadcrumb__item" itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem">';
+				echo the_title();
+				echo '</li>';
+		}
+	}
+	elseif (is_tag()) {single_tag_title();}
+	elseif (is_day()) {echo"<li class='breadcrumb__item' itemprop='itemListElement' itemscope='itemscope' itemtype='http://schema.org/ListItem'>Archive for "; the_time('F jS, Y'); echo'</li>';}
+	elseif (is_month()) {echo"<li class='breadcrumb__item' itemprop='itemListElement' itemscope='itemscope' itemtype='http://schema.org/ListItem'>Archive for "; the_time('F, Y'); echo'</li>';}
+	elseif (is_year()) {echo"<li class='breadcrumb__item' itemprop='itemListElement' itemscope='itemscope' itemtype='http://schema.org/ListItem'>Archive for "; the_time('Y'); echo'</li>';}
+	elseif (is_author()) {echo"<li class='breadcrumb__item' itemprop='itemListElement' itemscope='itemscope' itemtype='http://schema.org/ListItem'>Author Archive"; echo'</li>';}
+	elseif (isset($_GET['paged']) && !empty($_GET['paged'])) {echo "<li class='breadcrumb__item' itemprop='itemListElement' itemscope='itemscope' itemtype='http://schema.org/ListItem'>Blog Archives"; echo'</li>';}
+	elseif (is_search()) {echo"<li class='breadcrumb__item' itemprop='itemListElement' itemscope='itemscope' itemtype='http://schema.org/ListItem'>Search Results"; echo'</li>';}
+	echo ' </ul>
+			</div>
+
+		</div>
+		</div>';
+}
+
+add_action('flatsome_before_page','the_breadcrumb', 1);
+add_action('flatsome_before_blog','the_breadcrumb', 1);
