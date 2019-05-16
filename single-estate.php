@@ -105,7 +105,7 @@ $slide_show = unserialize($meta['slide_show'][0]); ?>
 					<div class="descrip">
 						<div class="des_title">Chi tiết dự án</div>
 						<div class="des">
-							<p><?php the_content() ?></p>
+							<p><?php echo get_post()->post_content ?></p>
 						</div>
 					</div>
 					<div class="detail">
@@ -113,6 +113,12 @@ $slide_show = unserialize($meta['slide_show'][0]); ?>
 						<div class="det">
 
 							<div class="name"><span>Tên dự án: </span><?php the_title() ?></div>
+							<?php if($meta['address']){?>
+								<div class="name"><span>Địa điểm: </span><?php echo $meta['address'][0] ?></div>
+							<?php }?>
+							<?php if($meta['processing_status']){?>
+								<div class="name"><span>Trạng thái hoàn thiện: </span><?php echo $meta['processing_status'][0] ?></div>
+							<?php }?>
 						</div>
 						<div class="contact"><a href="/lien-he" title="Liên hệ">Liên hệ</a></div>
 					</div>

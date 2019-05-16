@@ -52,6 +52,7 @@ if ( ! function_exists('add_config_post_type') ) {
             'exclude_from_search'   => true,
             'publicly_queryable'    => true,
             'capability_type'       => 'page',
+            'menu_icon'           => 'dashicons-admin-generic'
         );
         register_post_type( 'config_fvn', $args );
 		
@@ -63,8 +64,8 @@ if ( ! function_exists('add_config_post_type') ) {
             'archives'              => __( 'Item Archives'),
             'attributes'            => __( 'Item Attributes'),
             'parent_item_colon'     => __( 'Parent Item:'),
-            'all_items'             => __( 'All Items'),
-            'add_new_item'          => __( 'Add New Item'),
+            'all_items'             => __( 'Tất cả công trình'),
+            'add_new_item'          => __( 'Add công trình'),
             'add_new'               => __( 'Thêm công trình'),
             'new_item'              => __( 'Thêm mới'),
             'edit_item'             => __( 'Chỉnh sửa'),
@@ -102,6 +103,7 @@ if ( ! function_exists('add_config_post_type') ) {
             'exclude_from_search'   => false,
             'publicly_queryable'    => true,
             'capability_type'       => 'post',
+            'menu_icon'           => 'dashicons-admin-home'
         );
         register_post_type( 'estate', $args );
     
