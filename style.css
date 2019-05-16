@@ -18,6 +18,9 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, lege
     margin: 0;
     padding: 0;
 }
+.product_name{
+	margin-top:30px;
+}
 /*header*/
 .nav>li>a, .nav-dropdown>li>a, .nav-column>li>a {
     transition: all .2s;
