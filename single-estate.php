@@ -63,7 +63,7 @@ $slide_show = unserialize($meta['slide_show'][0]); ?>
 
 						<?php foreach ($slide_show as $img) { ?>
 							<div>
-								<img data-u="image" src="<?php echo wp_get_attachment_image_src($img, 'large')[0] ?>" />
+								<img data-u="image" src="<?php echo wp_get_attachment_image_src($img, 'origin')[0] ?>" />
 								<img data-u="thumb" src="<?php echo wp_get_attachment_image_src($img, 'medium')[0] ?>" />
 							</div>
 						<?php } ?>
