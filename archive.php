@@ -5,17 +5,17 @@
  * @package flatsome
  */
 // die;
-wp_enqueue_script('original-web', $root . '/assets/js/source.js', array(), '1.0.0', true);
+// wp_enqueue_script('original-web', $root . '/assets/js/source.js', array(), '1.0.0', true);
 get_header();
 // die;
 // $cat = get_the_category();
-
+// echo '<pre>';print_r();echo '</pre>';
 ?>
 
 
 
 <div class='wrapper_content nohome'>
-
+	<?php if(get_post()->post_type=='estate'){?>
 	<div class="home_pos_0">
 		<div class="block_banners banners_0 blocks_banner blocks0 block" id="block_id_159">
 			<div class="block_title"><span><?php the_archive_title(); ?></span></div>
@@ -39,7 +39,7 @@ get_header();
 			<!--	end CONTENT -->
 		</div>
 	</div>
-
+	<?php }?>
 	<?php the_breadcrumb() ?>
 
 	<div class='main_wrapper container  '>
