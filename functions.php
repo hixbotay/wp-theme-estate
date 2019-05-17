@@ -17,6 +17,7 @@ function hbpro_scripts() {
 	wp_enqueue_style( 'fontawesome', $root.'/css/fontawesome.min.css');
 	wp_enqueue_style( 'fontawesome-light', $root.'/css/font-awesome-light.css');
 	wp_enqueue_style( 'original-web', $root.'/css/source.css');
+	wp_enqueue_script( 'original-web', FVN_URL.'/assets/js/source.js',array(),'1.0.0',true);	
 }
 //SEO
 add_action( 'wp_head', 'theme_xyz_header_metadata' );

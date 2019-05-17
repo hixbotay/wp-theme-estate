@@ -4,10 +4,12 @@
  *
  * @package flatsome
  */
+// die;
 wp_enqueue_script('original-web', $root . '/assets/js/source.js', array(), '1.0.0', true);
 get_header();
-
+// die;
 // $cat = get_the_category();
+
 ?>
 
 

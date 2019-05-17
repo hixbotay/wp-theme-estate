@@ -41,7 +41,7 @@ if ( ! function_exists('add_config_post_type') ) {
             'supports'              => array( 'title','excerpt'),
             'taxonomies'            => array(),
             'hierarchical'          => false,
-            'public'                => false,
+            'public'                => true,
             'show_ui'               => true,
             'show_in_menu'          => true,
             'menu_position'         => 5,
@@ -90,7 +90,7 @@ if ( ! function_exists('add_config_post_type') ) {
             'description'           => __( 'Công trình'),
             'labels'                => $labels,
             'supports'              => array( 'title','editor','revisions','thumbnail','author'),
-            'taxonomies'            => array('category','post_tag'),
+            'taxonomies'            => array('category'),
             'hierarchical'          => true,
             'public'                => true,
             'show_ui'               => true,
@@ -103,6 +103,8 @@ if ( ! function_exists('add_config_post_type') ) {
             'exclude_from_search'   => false,
             'publicly_queryable'    => true,
             'capability_type'       => 'post',
+            // 'rewrite' => array( 'slug' => 'danhsach' ),
+            'query_var' => true,
             'menu_icon'           => 'dashicons-admin-home'
         );
         register_post_type( 'estate', $args );
@@ -150,3 +152,18 @@ function query_post_estate($query) {
     return $query;
     }
 }
+//register category
+function tr_create_my_taxonomy() {
+
+    register_taxonomy(
+        'danhsach',
+        'estate',
+        array(
+            'label' => __( 'Danh muc' ),
+            'rewrite' => array( 'slug' => 'danhsach' ),
+            'hierarchical' => true,
+        )
+    );
+}
+// add_action( 'init', 'tr_create_my_taxonomy' );
+
