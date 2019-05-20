@@ -9,6 +9,8 @@ foreach (glob(HBPRO_THEME_PATH.'/shortcodes/*.php') as $filename)
 }
 require_once 'post_type.php';
 require_once 'helpers/html.php';
+require_once 'helpers/setting.php';
+
 
 //script
 add_action( 'wp_enqueue_scripts', 'hbpro_scripts' );
