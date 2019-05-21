@@ -2,7 +2,10 @@
 /*
 Template name: Page - Full Width
 */
-get_header(); ?>
+get_header(); 
+$option_values = get_option( 'fvn_config' );
+$id_number = 1;
+?>
 
 <?php do_action( 'flatsome_before_page' ); ?>
 <div class="main_wrapper container  ">
@@ -36,89 +39,109 @@ get_header(); ?>
 							<div class="fields">
 								<label for="kind">Thể loại</label><br>
 								<select name="kind_3" id="kind_3" class="kind2">
-									<option value="20" class="i_kind_20" data-id="20" data-price="4500000" vd="1">Đặc
-										biệt</option>
-									<option value="19" class="i_kind_19" data-id="19" data-price="3500000" vd="0.8">Nhà
-										lô</option>
-									<option value="18" class="i_kind_18" data-id="18" data-price="3500000" vd="1">Biệt
-										thự</option>
-									<option value="17" class="i_kind_17" data-id="17" data-price="4000000" vd="1.2">
-										Khách sạn</option>
-									<option value="16" class="i_kind_16" data-id="16" data-price="3500000" vd="1.2">Công
-										trình thương mại</option>
-									<option value="15" class="i_kind_15" data-id="15" data-price="3600000" vd="1">Văn
-										phòng</option>
-									<option value="14" class="i_kind_14" data-id="14" data-price="4000000" vd="0.8">
-										Chung cư</option>
+									<?php $option_values['kind1'] = explode(PHP_EOL,$option_values['kind1']);
+									foreach($option_values['kind1'] as $key=>$val){
+										$val = explode('|',$val)?>
+										<option value="<?php echo $id_number?>" class="i_kind_<?php echo $id_number?>" data-id="<?php echo $id_number?>" data-price="<?php echo $val[1]?>" vd="<?php echo $val[2]?>"><?php echo $val[0]?></option>
+									<?php 
+								$id_number++;
+								}?>
 								</select>
 							</div>
 							<div class="fields">
 								<label for="stype_3">Phong cách thi công</label><br>
 								<select name="stype_3" id="stype_3" class="stype2 stt_1">
-									<option value="1" class="i_stype_9" data-id="9" vt="1">Hiện đại</option>
-									<option value="1.2" class="i_stype_10" data-id="10" vt="1.2">Tân cổ điển</option>
-									<option value="1.3" class="i_stype_11" data-id="11" vt="1.3">Cổ điển</option>
-									<option value="1" class="i_stype_12" data-id="12" vt="1">Á Đông</option>
+								<?php $option_values['stype_3'] = explode(PHP_EOL,$option_values['stype_3']);
+									foreach($option_values['stype_3'] as $key=>$val){
+										$val = explode('|',$val)?>
+										<option value="<?php echo $val[1]?>" class="i_stype_<?php echo $id_number?>" data-id="<?php echo $id_number?>" vt="<?php echo $val[1]?>"><?php echo $val[0]?></option>
+									<?php 
+								$id_number++;
+								}?>
 								</select>
 							</div>
 							<div class="fields">
 								<label for="stype_3">Chủng loại gỗ</label><br>
 								<select name="stype_3" id="stype_3" class="stype2 stt_2">
-									<option value="1" class="i_stype_13" data-id="13" vt="1">Gỗ công nghiệp</option>
-									<option value="1.2" class="i_stype_14" data-id="14" vt="1.2">Gỗ tân bì</option>
-									<option value="2.2" class="i_stype_15" data-id="15" vt="2.2">Gỗ óc chó</option>
-									<option value="2" class="i_stype_16" data-id="16" vt="2">Gỗ Hương</option>
-									<option value="1.3" class="i_stype_17" data-id="17" vt="1.3">Gỗ sồi</option>
+								<?php $option_values['stype_4'] = explode(PHP_EOL,$option_values['stype_4']);
+									foreach($option_values['stype_4'] as $key=>$val){
+										$val = explode('|',$val)?>
+										<option value="<?php echo $val[1]?>" class="i_stype_<?php echo $id_number?>" data-id="<?php echo $id_number?>" vt="<?php echo $val[1]?>"><?php echo $val[0]?></option>
+									<?php 
+								$id_number++;
+								}?>									
 								</select>
 							</div>
 							<div class="fields">
 								<label for="stype_3">Trần thạch cao</label><br>
 								<select name="stype_3" id="stype_3" class="stype2 stt_3">
-									<option value="0" class="i_stype_18" data-id="18" vt="0">Không trần</option>
-									<option value="280000" class="i_stype_19" data-id="19" vt="280000">Có trần</option>
+									<?php $option_values['stype_5'] = explode(PHP_EOL,$option_values['stype_5']);
+										foreach($option_values['stype_5'] as $key=>$val){
+											$val = explode('|',$val)?>
+											<option value="<?php echo $val[1]?>" class="i_stype_<?php echo $id_number?>" data-id="<?php echo $id_number?>" vt="<?php echo $val[1]?>"><?php echo $val[0]?></option>
+										<?php 
+									$id_number++;
+									}?>			
 								</select>
 							</div>
 							<div class="fields">
 								<label for="stype_3">Sơn bả</label><br>
 								<select name="stype_3" id="stype_3" class="stype2 stt_4">
-									<option value="0" class="i_stype_20" data-id="20" vt="0">Không sơn</option>
-									<option value="150000" class="i_stype_21" data-id="21" vt="150000">Maxilife</option>
-									<option value="200000" class="i_stype_22" data-id="22" vt="200000">Dulux</option>
+									<?php $options = explode(PHP_EOL,$option_values['stt_4']);
+										foreach($options as $key=>$val){
+											$val = explode('|',$val)?>
+											<option value="<?php echo $val[1]?>" class="i_stype_<?php echo $id_number?>" data-id="<?php echo $id_number?>" vt="<?php echo $val[1]?>"><?php echo $val[0]?></option>
+										<?php 
+									$id_number++;
+									}?>			
 								</select>
 							</div>
 							<div class="fields">
 								<label for="stype_3">Giấy dán tường</label><br>
 								<select name="stype_3" id="stype_3" class="stype2 stt_5">
-									<option value="0" class="i_stype_23" data-id="23" vt="0">Không dán</option>
-									<option value="60000" class="i_stype_24" data-id="24" vt="60000">Mảng trang trí
-									</option>
-									<option value="400000" class="i_stype_25" data-id="25" vt="400000">Cả nhà</option>
+								<?php $options = explode(PHP_EOL,$option_values['stt_5']);
+										foreach($options as $key=>$val){
+											$val = explode('|',$val)?>
+											<option value="<?php echo $val[1]?>" class="i_stype_<?php echo $id_number?>" data-id="<?php echo $id_number?>" vt="<?php echo $val[1]?>"><?php echo $val[0]?></option>
+										<?php 
+									$id_number++;
+									}?>			
 								</select>
 							</div>
 							<div class="fields">
 								<label for="stype_3">Sàn gỗ</label><br>
 								<select name="stype_3" id="stype_3" class="stype2 stt_6">
-									<option value="0" class="i_stype_26" data-id="26" vt="0">Không sàn</option>
-									<option value="400000" class="i_stype_27" data-id="27" vt="400000">Sàn TQ cao cấp
-									</option>
-									<option value="600000" class="i_stype_28" data-id="28" vt="600000">Sàn Malaysia
-									</option>
+								<?php $options = explode(PHP_EOL,$option_values['stt_6']);
+										foreach($options as $key=>$val){
+											$val = explode('|',$val)?>
+											<option value="<?php echo $val[1]?>" class="i_stype_<?php echo $id_number?>" data-id="<?php echo $id_number?>" vt="<?php echo $val[1]?>"><?php echo $val[0]?></option>
+										<?php 
+									$id_number++;
+									}?>			
 								</select>
 							</div>
 							<div class="fields">
 								<label for="stype_3">Rèm cửa</label><br>
 								<select name="stype_3" id="stype_3" class="stype2 stt_7">
-									<option value="0" class="i_stype_29" data-id="29" vt="0">Không rèm</option>
-									<option value="300000" class="i_stype_30" data-id="30" vt="300000">Rèm TQ cao cấp
-									</option>
+								<?php $options = explode(PHP_EOL,$option_values['stt_7']);
+										foreach($options as $key=>$val){
+											$val = explode('|',$val)?>
+											<option value="<?php echo $val[1]?>" class="i_stype_<?php echo $id_number?>" data-id="<?php echo $id_number?>" vt="<?php echo $val[1]?>"><?php echo $val[0]?></option>
+										<?php 
+									$id_number++;
+									}?>			
 								</select>
 							</div>
 							<div class="fields">
 								<label for="stype_3">Thiết bị WC</label><br>
 								<select name="stype_3" id="stype_3" class="stype2 stt_8">
-									<option value="0" class="i_stype_31" data-id="31" vt="0">Không thiết bị</option>
-									<option value="500000" class="i_stype_32" data-id="32" vt="500000">Inax</option>
-									<option value="1000000" class="i_stype_33" data-id="33" vt="1000000">Toto</option>
+									<?php $options = explode(PHP_EOL,$option_values['stt_8']);
+										foreach($options as $key=>$val){
+											$val = explode('|',$val)?>
+											<option value="<?php echo $val[1]?>" class="i_stype_<?php echo $id_number?>" data-id="<?php echo $id_number?>" vt="<?php echo $val[1]?>"><?php echo $val[0]?></option>
+										<?php 
+									$id_number++;
+									}?>			
 								</select>
 							</div>
 							<div class="fields">

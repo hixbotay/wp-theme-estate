@@ -2,7 +2,10 @@
 /*
 Template name: Page - Full Width
 */
-get_header(); ?>
+get_header(); 
+$option_values = get_option( 'fvn_config' );
+$id_number = 1;
+?>
 
 <?php do_action( 'flatsome_before_page' ); ?>
 <div class="wrapper_content nohome">
@@ -21,24 +24,25 @@ get_header(); ?>
 							<div class="fields">
 								<label for="kind">Thể loại</label><br>
 								<select name="kind_1" id="kind_1" class="kind">
-									<option value="300000" class="i_kind_9" data-id="9" vt="300000">Khách sạn</option>
-									<option value="200000" class="i_kind_8" data-id="8" vt="200000">Công trình thương
-										mại</option>
-									<option value="300000" class="i_kind_7" data-id="7" vt="300000">Biệt thự</option>
-									<option value="250000" class="i_kind_6" data-id="6" vt="250000">Nhà lô</option>
-									<option value="250000" class="i_kind_2" data-id="2" vt="250000">Chung cư cao cấp
-									</option>
-									<option value="220000" class="i_kind_1" data-id="1" vt="220000">Văn phòng cao cấp
-									</option>
+									<?php $options = explode(PHP_EOL,$option_values['kind_1']);
+										foreach($options as $key=>$val){
+											$val = explode('|',$val)?>
+											<option value="<?php echo $val[1]?>" class="i_kind_<?php echo $id_number?>" data-id="<?php echo $id_number?>" vt="<?php echo $val[1]?>"><?php echo $val[0]?></option>
+										<?php 
+									$id_number++;
+									}?>			
 								</select>
 							</div>
 							<div class="fields">
 								<label for="stype_1">Phong cách thiết kế nội thất</label><br>
 								<select name="stype_1" id="stype_1" class="stype">
-									<option value="1" class="i_stype_1" data-id="1" vt="1">Hiện đại</option>
-									<option value="1.2" class="i_stype_2" data-id="2" vt="1.2">Tân cổ điển</option>
-									<option value="1.3" class="i_stype_3" data-id="3" vt="1.3">Cổ điển</option>
-									<option value="1" class="i_stype_4" data-id="4" vt="1">Á Đông</option>
+									<?php $options = explode(PHP_EOL,$option_values['stype']);
+										foreach($options as $key=>$val){
+											$val = explode('|',$val)?>
+											<option value="<?php echo $val[1]?>" class="i_stype_<?php echo $id_number?>" data-id="<?php echo $id_number?>" vt="<?php echo $val[1]?>"><?php echo $val[0]?></option>
+										<?php 
+									$id_number++;
+									}?>			
 								</select>
 							</div>
 							<div class="fields">
@@ -82,20 +86,25 @@ get_header(); ?>
 							<div class="fields">
 								<label for="kind">Thể loại</label><br>
 								<select name="kind_2" id="kind_2" class="kind">
-									<option value="250000" class="i_kind_13" data-id="13" vt="250000">Khách sạn</option>
-									<option value="200000" class="i_kind_12" data-id="12" vt="200000">Công trình thương
-										mại</option>
-									<option value="300000" class="i_kind_11" data-id="11" vt="300000">Biệt thự</option>
-									<option value="200000" class="i_kind_10" data-id="10" vt="200000">Nhà lô</option>
+									<?php $options = explode(PHP_EOL,$option_values['kind_2']);
+										foreach($options as $key=>$val){
+											$val = explode('|',$val)?>
+											<option value="<?php echo $val[1]?>" class="i_kind_<?php echo $id_number?>" data-id="<?php echo $id_number?>" vt="<?php echo $val[1]?>"><?php echo $val[0]?></option>
+										<?php 
+									$id_number++;
+									}?>			
 								</select>
 							</div>
 							<div class="fields">
 								<label for="stype_2">Phong cách thiết kế kiến trúc</label><br>
 								<select name="stype_2" id="stype_2" class="stype">
-									<option value="1" class="i_stype_5" data-id="5" vt="1">Hiện đại</option>
-									<option value="1.2" class="i_stype_6" data-id="6" vt="1.2">Tân cổ điển</option>
-									<option value="1.3" class="i_stype_7" data-id="7" vt="1.3">Cổ điển</option>
-									<option value="1" class="i_stype_8" data-id="8" vt="1">Á Đông</option>
+									<?php $options = explode(PHP_EOL,$option_values['stype_2']);
+										foreach($options as $key=>$val){
+											$val = explode('|',$val)?>
+											<option value="<?php echo $val[1]?>" class="i_stype_<?php echo $id_number?>" data-id="<?php echo $id_number?>" vt="<?php echo $val[1]?>"><?php echo $val[0]?></option>
+										<?php 
+									$id_number++;
+									}?>	
 								</select>
 							</div>
 							<div class="fields">
