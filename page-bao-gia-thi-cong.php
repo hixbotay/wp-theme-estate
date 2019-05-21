@@ -4,6 +4,7 @@ Template name: Page - Full Width
 */
 get_header(); 
 $option_values = get_option( 'fvn_config' );
+
 $id_number = 1;
 ?>
 
@@ -39,8 +40,8 @@ $id_number = 1;
 							<div class="fields">
 								<label for="kind">Thể loại</label><br>
 								<select name="kind_3" id="kind_3" class="kind2">
-									<?php $option_values['kind1'] = explode(PHP_EOL,$option_values['kind1']);
-									foreach($option_values['kind1'] as $key=>$val){
+									<?php $options = explode(PHP_EOL,$option_values['kind_3']);
+									foreach($options as $key=>$val){
 										$val = explode('|',$val)?>
 										<option value="<?php echo $id_number?>" class="i_kind_<?php echo $id_number?>" data-id="<?php echo $id_number?>" data-price="<?php echo $val[1]?>" vd="<?php echo $val[2]?>"><?php echo $val[0]?></option>
 									<?php 
