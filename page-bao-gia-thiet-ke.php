@@ -8,6 +8,41 @@ $id_number = 1;
 ?>
 
 <?php do_action( 'flatsome_before_page' ); ?>
+<style>
+.menu_cat_furn {
+    margin: 0 -20px;
+}
+.menu_cat_furn .cats_content {
+    width: calc(33.33% - 40px);
+    margin: 0 20px;
+    float: left;
+}
+.menu_cat_furn .form_note {
+    background: #fff;
+    padding: 30px;
+    box-sizing: border-box;
+    text-align: justify;
+    color: red;
+    font-size: 17px;
+}
+#wrapper, #main{
+background-color:#F8F8F8;
+}
+.menu_cat_furn .form_note .link {
+    text-align: center;
+    margin-top: 30px;
+}
+.menu_cat_furn .form_note .link a {
+    padding: 10px 20px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-size: 16px;
+    background: var(--main-color);
+}
+.description a {
+    color: #00A7F4;
+}
+</style>
 <div class="wrapper_content nohome">
 	<div class="main_wrapper container  ">
 		<div class="main-area-full">
